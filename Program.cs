@@ -34,8 +34,34 @@ namespace Laboratory
 
 		static void CheckStringFunctionality()
 		{
+            Console.WriteLine("Checking String functionality:");
 
-		}
+            String first = new String();
+            Logger.Msg($"first: {first}\n", "val");
+
+            String second = new String();
+            Logger.Msg($"second: {second}\n", "val");
+            Logger.Msg($"first.Equals(second): {first.Equals(second)}\n", "cmp");
+
+            char[] secondContent = { 'H', 'e', 'l', 'l', 'o' };
+            second = new String(secondContent);
+
+            Logger.Msg($"second: {second}\n", "val");
+            Logger.Msg($"first.Equals(second): {first.Equals(second)}\n", "cmp");
+
+            String third = new String(new char[] { ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' });
+            Logger.Msg($"third: {third}\n", "val");
+
+            Logger.Msg($"second.Equals(third): {second.Equals(third)}\n", "cmp");
+
+            first = second + third;
+            Logger.Msg($"first as second + third:\n\t{first}\n", "act");
+
+            String fourth = new String(new char[] { 'b', 'r' }) * 5;
+            Logger.Msg($"fourth: {fourth}\n", "val");
+
+            Console.WriteLine("\n");
+        }
 
 		static void CheckListFunctionality()
 		{
@@ -134,8 +160,52 @@ namespace Laboratory
 
 		static void CheckQueueFunctionality()
 		{
+            Console.WriteLine("Checking Queue functionality:");
 
-		}
+            Queue<int> first = new Queue<int>();
+            for (int i = 1; i < 11; i++)
+			{
+                first.Add(i);
+                Logger.Msg($"first after Add(): {first}", "act");
+            }
+
+            Logger.Msg($"first: {first}", "val");
+
+            Queue<int> second = new Queue<int>();
+
+            Logger.Msg($"second: {second}\n", "val");
+            Logger.Msg($"first.Equals(second): {first.Equals(second)}\n", "cmp");
+
+            for (int i = 1; i < 11; i++)
+                second.Add(i);
+
+            Logger.Msg($"second: {second}\n", "val");
+            Logger.Msg($"first.Equals(second): {first.Equals(second)}\n", "cmp");
+
+            Queue<string> third = new Queue<string>();
+
+            third.Add("1");
+            third.Add("1");
+            third.Add("3");
+            third.Add("5");
+            third.Add("2");
+            third.Add("4");
+
+            Logger.Msg($"third: {third}\n", "val");
+
+            Logger.Msg($"second.Equals(third): {second.Equals(third)}\n", "cmp");
+
+            third.Pop();
+            Logger.Msg($"third after Pop():\n\t{third}", "act");
+
+            third.Pop();
+            Logger.Msg($"third after Pop():\n\t{third}", "act");
+
+            third.Pop();
+            Logger.Msg($"third after Pop():\n\t{third}", "act");
+
+            Console.WriteLine("\n");
+        }
 
 		static void CheckTreeFunctionality()
 		{
