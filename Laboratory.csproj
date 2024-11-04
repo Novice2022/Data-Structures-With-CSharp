@@ -43,11 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lab 1.cs" />
+    <Compile Include="DataStructures.cs" />
     <Compile Include="Lab 2.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structures\List.cs" />
+    <Compile Include="Structures\Queue.cs" />
+    <Compile Include="Structures\Stack.cs" />
+    <Compile Include="Structures\String.cs" />
+    <Compile Include="Structures\Table.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
