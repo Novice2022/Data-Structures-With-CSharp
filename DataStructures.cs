@@ -241,14 +241,57 @@ namespace Laboratory
             string[][] data = new string[][]
             {
                 new string[] { "Lorem ipsum", "1", null, "21.36" },
-                new string[] { null, "123", "12,54321", null }
+                new string[] { null, "123", "12,54321", null },
+                new string[] { "Hello, World!", (-2).ToString(), 43.5.ToString() }
             };
 
             table.Insert(data);
-
             table.Print();
 
-            System.Console.WriteLine("\n");
+            Table table2 = new Table(table, "First table copy");
+            table2.RemoveColumn("Column 3");
+
+            table2.Print();
+            table.Print();
+
+            string[][] nestedArraysRepresentation = table.ToNestedArraysAsRows();
+
+            for (int row = 0; row < nestedArraysRepresentation.Length; row++)
+            {
+                for (int col = 0; col < nestedArraysRepresentation[row].Length; col++)
+                {
+                    string element = nestedArraysRepresentation[row][col];
+
+                    if (element != null)
+                        System.Console.Write("\"" + nestedArraysRepresentation[row][col] + "\"");
+                    
+                    System.Console.Write(", ");
+                }
+
+                System.Console.WriteLine("\b\b \n");
+            }
+
+            System.Console.WriteLine();
+            Logger.Msg($"Table (with values at `Integer` column > 1):", "act");
+            Table result = table.Select(
+                new string[1][]
+                {
+                    new string[2] { "Integers", ">1" }
+                }
+            );
+
+            result.Print();
+
+            System.Console.WriteLine();
+            Logger.Msg($"Table (with values at `Doubles with short fractional part` column < 1):", "act");
+            result = table.Select(
+                new string[1][]
+                {
+                    new string[2] { "Doubles with short fractional part", "<1" }
+                }
+            );
+
+            result.Print();
         }
 
         static void CheckSetFunctionality()
